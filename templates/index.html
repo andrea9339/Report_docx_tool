@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Linkiller Report Generator</title>
+  <title>Generatore Report Linkiller</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap");
 
@@ -383,27 +383,26 @@
 <body>
   <main class="shell">
     <section class="hero">
-      <div class="eyebrow">Vercel-ready workflow</div>
-      <h1>Turn Excel links into a <em>finished DOCX report</em></h1>
+      <h1>Trasforma i link Excel in un <em>report DOCX completo</em></h1>
       <p class="lede">
-        Upload one <code>.xlsx</code> file. The app reads the <code>URL</code> column, injects the links into the DOCX template, and returns a generated Word report with the same filename.
+        Carica un file <code>.xlsx</code>. L'app legge la colonna <code>URL</code>, inserisce i link nel modello DOCX e restituisce un report Word generato con lo stesso nome file.
       </p>
 
       <ol class="steps">
         <li>
           <span class="step-number">01</span>
-          <strong>Upload the workbook</strong>
-          <span>Drag the Excel file into the drop area or choose it manually from your device.</span>
+          <strong>Carica il file Excel</strong>
+          <span>Trascina il file Excel nell'area di rilascio oppure selezionalo manualmente dal tuo dispositivo.</span>
         </li>
         <li>
           <span class="step-number">02</span>
-          <strong>Process the template</strong>
-          <span>The app reads the <code>URL</code> column and inserts each entry into the report layout.</span>
+          <strong>Elabora il modello</strong>
+          <span>L'app legge la colonna <code>URL</code> e inserisce ogni voce nel layout del report.</span>
         </li>
         <li>
           <span class="step-number">03</span>
-          <strong>Download instantly</strong>
-          <span>The generated Word document downloads automatically when processing completes.</span>
+          <strong>Scarica subito</strong>
+          <span>Il documento Word generato viene scaricato automaticamente al termine dell'elaborazione.</span>
         </li>
       </ol>
     </section>
@@ -412,37 +411,37 @@
       <div>
         <div class="panel-top">
           <div>
-            <h2>Upload generator</h2>
-            <p>Single-file workflow. No account, no extra fields, no local installation.</p>
+            <h2>Generatore di upload</h2>
+            <p>Flusso a file singolo. Nessun account, nessun campo extra, nessuna installazione locale.</p>
           </div>
-          <div class="chip">xlsx in / docx out</div>
+          <div class="chip">xlsx in ingresso / docx in uscita</div>
         </div>
 
         <input id="fileInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
 
-        <section id="dropzone" class="dropzone" aria-label="Drop XLSX file here">
+        <section id="dropzone" class="dropzone" aria-label="Trascina qui il file XLSX">
           <div>
             <div class="drop-icon">.X</div>
-            <strong>Drop the XLSX file here</strong>
-            <span>or click to browse and start generation immediately</span>
+            <strong>Trascina qui il file XLSX</strong>
+            <span>oppure fai clic per sfogliare i file e avviare subito la generazione</span>
           </div>
         </section>
 
         <div class="actions">
-          <button id="pickButton" type="button">Choose XLSX</button>
-          <div id="fileName" class="file-name">No file selected</div>
+          <button id="pickButton" type="button">Scegli XLSX</button>
+          <div id="fileName" class="file-name">Nessun file selezionato</div>
         </div>
 
         <div id="status" class="status" aria-live="polite"></div>
 
         <div class="mini-grid">
           <div class="mini-card">
-            <strong>Expected input</strong>
-            <span>A single Excel workbook with a column named <code>URL</code>.</span>
+            <strong>Input richiesto</strong>
+            <span>Un singolo file Excel con una colonna chiamata <code>URL</code>.</span>
           </div>
           <div class="mini-card">
-            <strong>Output name</strong>
-            <span>The downloaded file keeps the original XLSX name and switches to <code>.docx</code>.</span>
+            <strong>Nome dell'output</strong>
+            <span>Il file scaricato mantiene il nome originale dell'XLSX e passa a <code>.docx</code>.</span>
           </div>
         </div>
       </div>
@@ -473,12 +472,12 @@
       }
 
       if (!file.name.toLowerCase().endsWith(".xlsx")) {
-        setStatus("Only .xlsx files are supported.", "error");
+        setStatus("Sono supportati solo i file .xlsx.", "error");
         return;
       }
 
       fileName.textContent = file.name;
-      setStatus("Generating DOCX...", "");
+      setStatus("Generazione DOCX in corso...", "");
       setBusy(true);
 
       try {
@@ -492,7 +491,7 @@
 
         if (!response.ok) {
           const payload = await response.json().catch(() => ({}));
-          throw new Error(payload.error || "Generation failed.");
+          throw new Error(payload.error || "Generazione non riuscita.");
         }
 
         const blob = await response.blob();
@@ -507,9 +506,9 @@
         link.remove();
         URL.revokeObjectURL(objectUrl);
 
-        setStatus(`Downloaded ${downloadName}`, "ok");
+        setStatus(`Scaricato ${downloadName}`, "ok");
       } catch (error) {
-        setStatus(error.message || "Generation failed.", "error");
+        setStatus(error.message || "Generazione non riuscita.", "error");
       } finally {
         setBusy(false);
       }
