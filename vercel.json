@@ -1,8 +1,3 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "app.py": {
-      "excludeFiles": "{build/**,dist/**,__pycache__/**,*.xlsx,ALESSANDRO VACCARO.docx,NICOLA MASIERO.docx,build_desktop.bat,build_desktop_mac.sh,LinkillerReportApp.spec,desktop_app.py,MAC_BUILD.md,how to excecute.rtf,prompt.txt,run_ui.bat}"
-    }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json"
 }

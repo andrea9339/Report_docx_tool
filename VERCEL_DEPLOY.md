@@ -1,13 +1,13 @@
 # Vercel deployment
 
-This project is now set up as a Vercel-ready Flask web app.
+This project is set up as a Vercel-ready Flask web app.
 
 ## What Vercel uses
 
 - `app.py` as the Flask entrypoint
 - `requirements.txt` for Python dependencies
 - `.python-version` to pin Python 3.12
-- `vercel.json` to keep unnecessary local build files out of the deployment bundle
+- `vercel.json` only for optional project-level Vercel settings
 
 ## Deploy
 
@@ -16,7 +16,9 @@ This project is now set up as a Vercel-ready Flask web app.
 3. Import the repository into Vercel.
 4. Deploy with the default settings.
 
-Vercel's Flask documentation says a Flask app can deploy with zero configuration as long as it exposes a top-level `app`, and that static assets should be placed in `public/**` when needed:
+Vercel's current Flask documentation says a Flask app can deploy with zero configuration as long as it exposes a top-level `app`. The `functions` key in `vercel.json` is meant for Vercel Functions under `api/**`, so it should not target a root-level `app.py`.
+
+Static assets should be placed in `public/**` when needed:
 
 - https://vercel.com/docs/frameworks/backend/flask
 - https://vercel.com/docs/functions/runtimes/python
