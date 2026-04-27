@@ -139,7 +139,7 @@
     }
 
     .step-number {
-      display: inline-grid;
+      display: grid;
       width: 34px;
       height: 34px;
       border-radius: 50%;
@@ -149,6 +149,8 @@
       font-weight: 800;
       font-size: 13px;
       line-height: 1;
+      margin-top: 0;
+      flex: 0 0 34px;
     }
 
     .steps strong,
@@ -158,7 +160,7 @@
       font-size: 15px;
     }
 
-    .steps span,
+    .steps li > span:not(.step-number),
     .mini-card span {
       display: block;
       margin-top: 8px;
